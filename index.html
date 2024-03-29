@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quieres ser mi enamorada?</title>
+  <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #fec1b2; /* Color de fondo */
+      }
+      
+      #contenedor {
+        text-align: center;
+      }
+      
+      h1 {
+        color: #f70424; /* Color del título */
+      }
+      
+      #botones {
+        margin-top: 20px;
+      }
+      
+      button {
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #fe7f6c; /* Color de fondo de los botones */
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #f0a1a5; /* Color de fondo al pasar el mouse por encima */
+      }
+      
+      #mensaje {
+        display: none;
+        margin-top: 20px;
+      }
+      
+      #mensaje h2 {
+        color: #f70424; /* Color del título del mensaje */
+      }
+  </style>
+</head>
+<body>
+  <div id="contenedor">
+    <h1>¿Quieres ser mi enamorada?</h1>
+    <div id="botones">
+      <button id="noBtn">No</button>
+      <button id="siBtn">Sí</button>
+    </div>
+    <div id="mensaje">
+      <h2>Felicidades, tienes un enamorado lindo :)</h2>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const noBtn = document.getElementById('noBtn');
+      const siBtn = document.getElementById('siBtn');
+      const mensajeDiv = document.getElementById('mensaje');
+      
+      // Posiciones aleatorias para el botón No
+      function moverNo() {
+        const randomX = Math.random() * (window.innerWidth - noBtn.clientWidth);
+        const randomY = Math.random() * (window.innerHeight - noBtn.clientHeight);
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = randomX + 'px';
+        noBtn.style.top = randomY + 'px';
+      }
+      
+      // Event listener para el botón No
+      noBtn.addEventListener('click', moverNo);
+      
+      // Event listener para el botón Sí
+      siBtn.addEventListener('click', function() {
+        mensajeDiv.style.display = 'block';
+        document.getElementById('botones').style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
