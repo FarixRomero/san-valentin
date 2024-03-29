@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quieres ser mi enamorada?</title>
+  <title>Querida Brenda <br>Quieres ser mi enamorada?</title>
   <style>
     body {
         display: flex;
@@ -59,7 +59,8 @@
       <button id="siBtn">Sí</button>
     </div>
     <div id="mensaje">
-      <h2>Felicidades, tienes un enamorado lindo :)</h2>
+      <h2>Felicidades, tienes un bonito enamorado :)</h2>
+      <iframe width="560" height="315" src="https://youtube.com/shorts/dlzpt26HL4g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
   <script>
@@ -67,6 +68,7 @@
       const noBtn = document.getElementById('noBtn');
       const siBtn = document.getElementById('siBtn');
       const mensajeDiv = document.getElementById('mensaje');
+      let clicsNo = 0; // Variable para contar los clics en el botón "No"
       
       // Posiciones aleatorias para el botón No
       function moverNo() {
@@ -75,6 +77,20 @@
         noBtn.style.position = 'absolute';
         noBtn.style.left = randomX + 'px';
         noBtn.style.top = randomY + 'px';
+        
+        // Cambiar mensaje en función del número de clics en el botón "No"
+        if (clicsNo === 0) {
+          mensajeDiv.innerHTML = '<h2>Creo que te equivocaste, deberías decir Sí.</h2>';
+        } else if (clicsNo === 1) {
+          mensajeDiv.innerHTML = '<h2>Debería ser "Sí". Seguro tienes sueño.</h2>';
+        } else if (clicsNo === 2) {
+          mensajeDiv.innerHTML = '<h2>¿Estás seguro? Debes estar bromeando.</h2>';
+        } else {
+          mensajeDiv.innerHTML = '<h2>¡Estás loco! ¡Claro que sí!</h2>';
+        }
+        
+        mensajeDiv.style.display = 'block'; // Mostrar el mensaje
+        clicsNo++; // Incrementar el contador de clics en el botón "No"
       }
       
       // Event listener para el botón No
@@ -84,6 +100,7 @@
       siBtn.addEventListener('click', function() {
         mensajeDiv.style.display = 'block';
         document.getElementById('botones').style.display = 'none';
+        mensajeDiv.innerHTML = '<h2>Felicidades, tienes un bonito enamorado :)</h2><a href="https://youtube.com/shorts/dlzpt26HL4g"> aca tienes un regalo </a>';
       });
     });
   </script>
